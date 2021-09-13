@@ -8,7 +8,17 @@ export const fetchContacts = () => async dispatch => {
     const contacts = await contactsAPI.fetchContacts();
     dispatch(action.fetchContactsSuccess(contacts));
   } catch (error) {
-    console.log(error);
     dispatch(action.fetchContactsError(error));
+  }
+};
+
+export const postContact = contact => async dispatch => {
+  dispatch(action.fetchContactsRequest());
+
+  try {
+    await contactsAPI.postContacts(contact);
+    // dispatch(action.fetchContactsSuccess(contact));
+  } catch (error) {
+    // dispatch(action.fetchContactsError(error));
   }
 };

@@ -6,3 +6,7 @@ export async function fetchContacts() {
   const { data } = await axios.get('/contacts');
   return data;
 }
+
+export async function postContacts(contact) {
+  await axios.post('/contacts', contact);
+}

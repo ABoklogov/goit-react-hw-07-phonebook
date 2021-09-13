@@ -1,12 +1,14 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import * as action from '../../redux/contacts/contacts-action';
 import s from './ContactForm.module.css';
+// import * as api from '../../services/contacts-api';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  // const contact = useSelector();
 
   const handleNameChenge = e => {
     const { name, value } = e.target;
@@ -28,6 +30,7 @@ const ContactForm = () => {
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(action.addContact(name, number));
+    // api.postContacts(name, number);
     setName('');
     setNumber('');
   };
