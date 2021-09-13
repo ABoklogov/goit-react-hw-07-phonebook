@@ -1,9 +1,9 @@
 {
   "contacts": [{
-    "id": 1, "name": "Alexey", "number": "123456"
+    "id": "1", "name": "Alexey", "number": "123456"
   }, {
-    "id": 2, "name": "Boris", "number": "111111"
+    "id": "2", "name": "Boris", "number": "111111"
   }, {
-    "id": 3, "name": "Putin", "number": "333333"
+    "id": "3", "name": "Putin", "number": "333333"
   }]
 }

@@ -1,7 +1,7 @@
-// import { useEffect } from 'react';
-// import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 // import * as action from '../../redux/contacts/contacts-action';
-// import { getContacts } from '../../redux/contacts/contacts-selector';
+import * as contactsOperation from '../../redux/contacts/contacts-operation';
 // import * as contactsAPI from '../../services/contacts-api';
 import s from './App.module.css';
 import Filter from '../Filter';
@@ -9,17 +9,11 @@ import ContactForm from '../ContactForm';
 import ContactList from '../ContactList';
 
 const App = () => {
-  // const contacts = useSelector(getContacts);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  // const contactsRepositiry = JSON.parse(localStorage.getItem('contacts'));
-  // if (contactsRepositiry) {
-  //   dispatch(action.setContacts(contactsRepositiry));
-  // }
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts));
-  // }, [contacts]);
+  useEffect(() => {
+    dispatch(contactsOperation.fetchContacts());
+  }, [dispatch]);
 
   return (
     <div className={s.container}>
