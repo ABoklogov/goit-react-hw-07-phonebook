@@ -12,13 +12,10 @@ export const fetchContacts = () => async dispatch => {
   }
 };
 
-export const postContact = contact => async dispatch => {
-  dispatch(action.fetchContactsRequest());
+export const postContact = async contact => {
+  await contactsAPI.postContacts(contact);
+};
 
-  try {
-    await contactsAPI.postContacts(contact);
-    // dispatch(action.fetchContactsSuccess(contact));
-  } catch (error) {
-    // dispatch(action.fetchContactsError(error));
-  }
+export const deletContacts = async id => {
+  await contactsAPI.deleteContacts(id);
 };

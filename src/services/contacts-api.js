@@ -10,3 +10,7 @@ export async function fetchContacts() {
 export async function postContacts(contact) {
   await axios.post('/contacts', contact);
 }
+
+export async function deleteContacts(id) {
+  await axios.delete(`/contacts/${id}`);
+}

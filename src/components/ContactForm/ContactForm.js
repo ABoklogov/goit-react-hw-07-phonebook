@@ -1,14 +1,14 @@
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import shortid from 'shortid';
 import * as action from '../../redux/contacts/contacts-action';
 import s from './ContactForm.module.css';
-// import * as api from '../../services/contacts-api';
+import * as contactsOperation from '../../redux/contacts/contacts-operation';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
-  // const contact = useSelector();
 
   const handleNameChenge = e => {
     const { name, value } = e.target;
@@ -28,9 +28,15 @@ const ContactForm = () => {
   };
 
   const handleSubmit = e => {
+    const newContact = {
+      name,
+      number,
+      id: shortid.generate(),
+    };
+
     e.preventDefault();
-    dispatch(action.addContact(name, number));
-    // api.postContacts(name, number);
+    dispatch(action.addContact(newContact));
+    contactsOperation.postContact(newContact);
     setName('');
     setNumber('');
   };
