@@ -1,15 +1,15 @@
 import { useDispatch } from 'react-redux';
-import * as action from '../../../redux/contacts/contacts-action';
 import PropTypes from 'prop-types';
-import s from './ContactItem.module.css';
+import * as action from '../../../redux/contacts/contacts-action';
 import * as contactsOperation from '../../../redux/contacts/contacts-operation';
+import s from './ContactItem.module.css';
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
 
   const deleteContact = id => {
     dispatch(action.deleteContact(id));
-    contactsOperation.deletContacts(id);
+    dispatch(contactsOperation.deletContacts(id));
   };
 
   return (

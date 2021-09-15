@@ -1,9 +1,6 @@
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-// import * as action from '../../redux/contacts/contacts-action';
 import * as contactsOperation from '../../redux/contacts/contacts-operation';
-// import * as contactsAPI from '../../services/contacts-api';
-// import { getContacts } from '../../redux/contacts/contacts-selector';
 import s from './App.module.css';
 import Filter from '../Filter';
 import ContactForm from '../ContactForm';
