@@ -1,5 +1,5 @@
 import * as action from './contacts-action';
-import * as contactsAPI from '../../services/contacts-api';
+import * as contactsAPI from 'services/contacts-api';
 
 export const fetchContacts = () => async dispatch => {
   dispatch(action.fetchContactsRequest());

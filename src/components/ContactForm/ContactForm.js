@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import shortid from 'shortid';
-import * as action from '../../redux/contacts/contacts-action';
-import * as contactsOperation from '../../redux/contacts/contacts-operation';
+import { contactsAction, contactsOperation } from 'redux/contacts';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
@@ -35,7 +34,7 @@ const ContactForm = () => {
     };
 
     e.preventDefault();
-    dispatch(action.addContact(newContact));
+    dispatch(contactsAction.addContact(newContact));
     dispatch(contactsOperation.postContact(newContact));
     setName('');
     setNumber('');

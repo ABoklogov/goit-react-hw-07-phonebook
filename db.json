@@ -1,9 +1,19 @@
 {
   "contacts": [
     {
-      "name": "qwe",
-      "number": "2222222222",
-      "id": "mXllZBU9e"
+      "name": "Bob",
+      "number": "11111111",
+      "id": "jdVyFq0hu"
+    },
+    {
+      "name": "dad",
+      "number": "22222222",
+      "id": "f535zSwOF"
+    },
+    {
+      "name": "Vasya",
+      "number": "333333333",
+      "id": "4Z90MqSFG"
     }
   ]
 }

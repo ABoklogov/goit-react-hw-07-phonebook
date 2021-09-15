@@ -1,10 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import * as action from '../../redux/contacts/contacts-action';
-import { getFilter } from '../../redux/contacts/contacts-selector';
+import { contactsAction, contactsSelectors } from '../../redux/contacts';
 import s from './Filter.module.css';
 
 const Filter = () => {
-  const filter = useSelector(getFilter);
+  const filter = useSelector(contactsSelectors.getFilter);
   const dispatch = useDispatch();
 
   return (
@@ -15,7 +14,7 @@ const Filter = () => {
         type="text"
         name="filter"
         value={filter}
-        onChange={e => dispatch(action.chengeFilter(e))}
+        onChange={e => dispatch(contactsAction.chengeFilter(e))}
       />
     </label>
   );
