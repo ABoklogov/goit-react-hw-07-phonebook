@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { contactsOperation } from 'redux/contacts';
+import { useDispatch, useSelector } from 'react-redux';
+import { contactsOperation, contactsSelectors } from 'redux/contacts';
 import s from './App.module.css';
 import Filter from 'components/Filter';
 import ContactForm from 'components/ContactForm';
@@ -8,6 +8,8 @@ import ContactList from 'components/ContactList';
 
 const App = () => {
   const dispatch = useDispatch();
+  const loading = useSelector(contactsSelectors.getLoading);
+  const error = useSelector(contactsSelectors.getError);
 
   useEffect(() => {
     dispatch(contactsOperation.fetchContacts());
@@ -20,7 +22,9 @@ const App = () => {
 
       <h2>Contacts</h2>
       <Filter />
+      {loading && <h1>Loading...</h1>}
       <ContactList />
+      {error && alert(error)}
     </div>
   );
 };

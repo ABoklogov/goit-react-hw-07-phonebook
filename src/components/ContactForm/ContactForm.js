@@ -1,13 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import shortid from 'shortid';
-import { contactsAction, contactsOperation } from 'redux/contacts';
+import {
+  contactsAction,
+  contactsOperation,
+  contactsSelectors,
+} from 'redux/contacts';
 import s from './ContactForm.module.css';
 
 const ContactForm = () => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
+  const contacts = useSelector(contactsSelectors.getContacts);
 
   const handleNameChenge = e => {
     const { name, value } = e.target;
@@ -27,13 +32,19 @@ const ContactForm = () => {
   };
 
   const handleSubmit = e => {
+    e.preventDefault();
     const newContact = {
       name,
       number,
       id: shortid.generate(),
     };
+    const checkingContacts = el => el.name.toLowerCase() === name.toLowerCase();
 
-    e.preventDefault();
+    if (contacts.some(checkingContacts)) {
+      alert(`${name} is alreaby in contacts`);
+      return;
+    }
+
     dispatch(contactsAction.addContact(newContact));
     dispatch(contactsOperation.postContact(newContact));
     setName('');

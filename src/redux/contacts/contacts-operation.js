@@ -8,7 +8,9 @@ export const fetchContacts = () => async dispatch => {
     const contacts = await contactsAPI.fetchContacts();
     dispatch(action.fetchContactsSuccess(contacts));
   } catch (error) {
-    dispatch(action.fetchContactsError(error));
+    dispatch(
+      action.fetchContactsError('error, there is no connection to the server'),
+    );
   }
 };
 
@@ -19,7 +21,9 @@ export const postContact = contact => async dispatch => {
     await contactsAPI.postContacts(contact);
     dispatch(action.fetchContactsSuccess());
   } catch (error) {
-    dispatch(action.fetchContactsError(error));
+    dispatch(
+      action.fetchContactsError('error, there is no connection to the server'),
+    );
   }
 };
 
@@ -30,6 +34,8 @@ export const deletContacts = id => async dispatch => {
     await contactsAPI.deleteContacts(id);
     dispatch(action.fetchContactsSuccess());
   } catch (error) {
-    dispatch(action.fetchContactsError(error));
+    dispatch(
+      action.fetchContactsError('error, there is no connection to the server'),
+    );
   }
 };
