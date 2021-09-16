@@ -13,7 +13,6 @@ const ContactForm = () => {
   const [number, setNumber] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(contactsSelectors.getContacts);
-  const error = useSelector(contactsSelectors.getError);
 
   const handleNameChenge = e => {
     const { name, value } = e.target;
