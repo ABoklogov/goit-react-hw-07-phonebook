@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
 import { createReducer } from '@reduxjs/toolkit';
 import * as action from './contacts-action';
+import { fetchContacts } from './contacts-operation';
 
 const items = createReducer([], {
   [action.addContact]: (state, { payload }) => [...state, payload],
@@ -10,7 +11,7 @@ const items = createReducer([], {
 
   [action.setContacts]: (_, { payload }) => [...payload],
 
-  [action.fetchContactsSuccess]: (_, { payload }) => payload,
+  [fetchContacts.fulfilled]: (_, { payload }) => payload,
 });
 
 const filter = createReducer('', {
@@ -18,14 +19,14 @@ const filter = createReducer('', {
 });
 
 const isLoading = createReducer(false, {
-  [action.fetchContactsRequest]: () => true,
-  [action.fetchContactsSuccess]: () => false,
-  [action.fetchContactsError]: () => false,
+  [fetchContacts.pending]: () => true,
+  [fetchContacts.fulfilled]: () => false,
+  [fetchContacts.rejected]: () => false,
 });
 
 const error = createReducer(null, {
-  [action.fetchContactsError]: (_, { payload }) => payload,
-  [action.fetchContactsRequest]: () => null,
+  [fetchContacts.rejected]: () => 'error, lost connection with the server!',
+  [fetchContacts.pending]: () => null,
 });
 
 const contactsReducer = combineReducers({
